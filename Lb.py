@@ -1,9 +1,7 @@
-import numpy as np
-import numpy.random as rng
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
 print("Задание 1")
+
+import numpy as np
+
 a = (2+3j)*(3-1j)
 print("1) (2+3i)(3-i) =", a)
 
@@ -17,7 +15,11 @@ for k in range(1, 9):
 c = (2-3j)/(1+4j) + (4-1j)
 print("4) (2-3i)/(1+4i) + (4-i) =", c)
 
+
 print("\nЗадание 2")
+
+import numpy as np
+
 z1 = (4-5j)*(5-6j**3)
 print("1) z =", z1)
 print("   Re =", np.real(z1), " Im =", np.imag(z1))
@@ -28,7 +30,12 @@ print("2) z =", z2)
 print("   Re =", np.real(z2), " Im =", np.imag(z2))
 print("   |z| =", np.abs(z2), " arg =", np.angle(z2), " conj =", np.conj(z2))
 
+
 print("\nЗадание 3")
+
+import numpy as np
+import matplotlib.pyplot as plt
+
 z1 = 1+3j
 z2 = 3+4j
 z3 = z1 + z2
@@ -38,7 +45,6 @@ print("z3 = z1+z2 =", z3)
 print("z4 = z1-z2 =", z4)
 
 plt.figure(figsize=(7, 7))
-orig = np.zeros(4)
 vals = np.array([z1, z2, z3, z4])
 colors = ['red', 'green', 'blue', 'orange']
 for i in range(4):
@@ -53,7 +59,12 @@ plt.xlabel('Re(z)')
 plt.ylabel('Im(z)')
 plt.show()
 
+
 print("\nЗадание 4")
+
+import numpy as np
+import matplotlib.pyplot as plt
+
 z = 2 - 2j
 r = np.abs(z)
 phi = np.angle(z)
@@ -79,7 +90,18 @@ plt.xlabel('Re(z)')
 plt.ylabel('Im(z)')
 plt.show()
 
+
 print("\nЗадание 5")
+
+import numpy as np
+
+z = 2 - 2j
+r = np.abs(z)
+phi = np.angle(z)
+n = 8
+k = np.arange(n)
+zroot = r**(1/n) * (np.cos((phi + 2*np.pi*k)/n) + 1j*np.sin((phi + 2*np.pi*k)/n))
+
 left = np.real(zroot) < 0
 print("Корни в левой полуплоскости:")
 print(zroot[left])
@@ -88,7 +110,12 @@ big_arg = np.angle(zroot) > np.pi/3
 print("Корни с arg > pi/3:")
 print(zroot[big_arg])
 
+
 print("\nЗадание 6")
+
+import numpy as np
+import matplotlib.pyplot as plt
+
 fig, axes = plt.subplots(1, 2, figsize=(12, 6))
 for ax, angle, name in zip(axes, [np.pi/4, 5*np.pi/6], ['pi/4', '5pi/6']):
     t = np.linspace(0, 5, 100)
@@ -103,7 +130,13 @@ for ax, angle, name in zip(axes, [np.pi/4, 5*np.pi/6], ['pi/4', '5pi/6']):
     ax.set_ylabel('Im(z)')
 plt.show()
 
+
 print("\nЗадание 7")
+
+import numpy as np
+import numpy.random as rng
+import matplotlib.pyplot as plt
+
 x = -3 + 6*rng.rand(20000)
 y = -3 + 6*rng.rand(20000)
 z = x + 1j*y
