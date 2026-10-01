@@ -1,17 +1,28 @@
 # Занятия для группы 12
 
+print("\nЗадание 6")
+
 import numpy as np
+import matplotlib.pyplot as plt
 
-a = np.array([0, 5, -1])
-b = np.array([-4, 9, 3])
+def arg_set(angle):
+    t = np.linspace(0, 5, 200)
+    return t * (np.cos(angle) + 1j*np.sin(angle))
 
-print('Вектор a:', a)
-print('Вектор b:', b)
+fig, axes = plt.subplots(1, 2, figsize=(12, 6))
 
-dot = np.dot(a, b)
-print('Скалярное произведение a·b:', dot)
+angles = [np.pi/4, 5*np.pi/6]
+names = ['pi/4', '5pi/6']
 
-cos_angle = dot / np.linalg.norm(a) / np.linalg.norm(b)
-print('Косинус угла между a и b:', cos_angle)
-print('Сам угол (рад):', np.arccos(cos_angle))
-print('Сам угол (град):', np.degrees(np.arccos(cos_angle)))
+for ax, angle, name in zip(axes, angles, names):
+    zz = arg_set(angle)
+    ax.plot(np.real(zz), np.imag(zz), color='red', linewidth=2)
+    ax.axhline(y=0, color='k')
+    ax.axvline(x=0, color='k')
+    ax.grid(True)
+    ax.axis('equal')
+    ax.set_title('Arg(z) = ' + name)
+    ax.set_xlabel('Re(z)')
+    ax.set_ylabel('Im(z)')
+
+plt.show()
